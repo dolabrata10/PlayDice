@@ -2,9 +2,11 @@
 function afterLoad() {
 
   $('#btn').click(function(){
+    //サイコロを6回転がす
     for (var i=1; i<=6; i++){
       var seed = Math.floor(Math.random()*6);
       var src = null;
+      //出た値と画像の関係付け
       switch (seed) {
         case 0 :
           src = 'one.png';
@@ -25,33 +27,41 @@ function afterLoad() {
           src = 'six.png';
           break;
       }
+      //画像と数値の決定
       switch (i) {
         case 1 :
           $('#dice1').attr('src', src);
-          var a1 = seed + 1;
+          $('#text1').html(seed+1);
+          var a1 = seed + 1 ;
           break;
         case 2 :
           $('#dice2').attr('src', src);
-          var b1 = seed + 1;
+          $('#text2').html(seed+1);
+          var b1 = seed + 1 ;
           break;
         case 3 :
           $('#dice3').attr('src', src);
+          $('#text3').html(seed+1);
           var c1 = seed + 1;
           break;
         case 4 :
           $('#dice4').attr('src', src);
-          var a2 = seed + 1;
+          $('#text4').html(seed+1);
+          var a2 = seed + 1 ;
           break;
         case 5 :
           $('#dice5').attr('src', src);
-          var b2 = seed + 1;
+          $('#text5').html(seed+1);
+          var b2 = seed + 1 ;
           break;
         case 6 :
           $('#dice6').attr('src', src);
-          var c2 = seed + 1;
+          $('#text6').html(seed+1);
+          var c2 = seed + 1 ;
           break;
       }
     }
+      //役の条件
       var is111 = ((a1 == 1) && (b1 == 1) && (c1 == 1));
       var is_zorome = ((a1 != 1) && (b1 != 1) && (c1 != 1) && (a1 == b1) && (b1 == c1));
       var is456 = ((a1 == 4) && (b1 == 5) && (c1 == 6))||((a1 == 4) && (b1 == 6) && (c1 == 5))||((a1 == 5) && (b1 == 4) && (c1 == 6))||((a1 == 5) && (b1 == 6) && (c1 == 4))||((a1 == 6) && (b1 == 4) && (c1 == 5))||((a1 == 6) && (b1 == 5) && (c1 == 4));
@@ -59,11 +69,9 @@ function afterLoad() {
       var is_num_a = ((b1 == c1) && (c1 != a1));
       var is_num_b = ((c1 == a1) && (a1 != b1));
       var is_num_c = ((a1 == b1) && (b1 != c1));
-      var x1 = [a1,b1,c1]; //画像と数値が合致するかの確認用
-      var x2 = [a2,b2,c2]; //画像と数値が合致するかの確認用
-      var yaku1 = (is111) || (is_zorome) || (is456) || (is123) || (is_num_a) || (is_num_b) || (is_num_c); 
-      var n2 = a2 + b2 + c2; //a1~c2までの値が計算されているかの確認用
-      switch (yaku1) {
+      var yaku_against= (is111) || (is_zorome) || (is456) || (is123) || (is_num_a) || (is_num_b) || (is_num_c);
+      //役を表示
+      switch (yaku_against) {
         case is111 :
           var n1 = "ピンゾロ!!";
           break;
@@ -89,10 +97,8 @@ function afterLoad() {
           var n1 = "役なし";
           break;
       }
-    $('#dice_against').html(x1);//画像と数値が合致するかの確認用
-    $('#dice_you').html(x2);//画像と数値が合致するかの確認用
     $('#score_against').html(n1);
-    $('#score_you').html(n2);
+    $('#score_mine').html(n2);
   });
 }
 //ロード完了したらafterLoadを実行
