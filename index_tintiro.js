@@ -62,7 +62,7 @@ function afterLoad() {
       }
     }
       //役の条件
-      //
+      //相手側
       var is111 = a == 1 && b == 1 && c == 1;
       var is_zorome = a != 1 && b != 1 && c != 1 && a == b && b == c;
       var is456 = (a == 4 && b == 5 && c == 6)||(a == 4 && b == 6 && c == 5)||(a == 5 && b == 4 && c == 6)||(a == 5 && b == 6 && c == 4)||(a == 6 && b == 4 && c == 5)||(a == 6 && b == 5 && c == 4);
@@ -72,7 +72,7 @@ function afterLoad() {
       var is_num_c = a == b && b != c;
       var yaku_against= is111 || is_zorome || is456 || is123 || is_num_a || is_num_b || is_num_c;
       //役を表示
-      //役なしの場合がピンゾロと認定されているようだ。
+      //役なしが判断されない。その際switch{}内の最上部の役ピンゾロとなる
       switch (yaku_against) {
         case is111 :
           var n1 = "ピンゾロ!!";
@@ -97,6 +97,41 @@ function afterLoad() {
           break;
         default :
           var n1 = "で役なし";
+          break;
+      }
+      //私側
+      var my_is111 = (x == 1 && y == 1 && z == 1);
+      var my_is_zorome = (x != 1 && y != 1 && z != 1 && x == y && y == z);
+      var my_is456 = (x == 4 && y == 5 && z == 6)||(x == 4 && y == 6 && z == 5)||(x == 5 && y == 4 && z == 6)||(x == 5 && y == 6 && z == 4)||(x == 6 && y == 4 && z == 5)||(x == y && y == 5 && z == 4);
+      var my_is123 = (x == 1 && y == 2 && z == 3)||(x == 1 && y == 3 && z == 2)||(x == 2 && y == 1 && z == 3)||(x == 2 && y == 3 && z == 1)||(x == 3 && y == 1 && z == 2)||(x == 3 && y == 2 && z == 1);
+      var is_num_x = (y == z && z != x);
+      var is_num_y = (z == x && x != y);
+      var is_num_z = (x == y && y != z);
+      var yaku_mine = my_is111 || my_is_zorome || my_is456 || my_is123 || is_num_x || is_num_y || is_num_z;
+      switch (yaku_mine) {
+        case my_is111 :
+          var n2 = "ピンゾロ!!";
+          break;
+        case my_is_zorome :
+          var n2 = "ゾロ目!!";
+          break;
+        case my_is456 :
+          var n2 = "シゴロ!!";
+          break;
+        case my_is123 :
+          var n2 = "ヒフミ!!";
+          break;
+        case is_num_x :
+          var n2 = "の "+x;
+          break;
+        case is_num_y :
+          var n2 = "の "+y;
+          break;
+        case is_num_z :
+          var n2 = "の "+z;
+          break;
+        default:
+          var n2 = "で役なし";
           break;
       }
     $('#score_against').html(n1);
