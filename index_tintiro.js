@@ -72,32 +72,29 @@ function afterLoad() {
       var is_num_c = a == b && b != c;
       var yaku_against= is111 || is_zorome || is456 || is123 || is_num_a || is_num_b || is_num_c;
       //役を表示
-      //役なしが判断されない。その際switch{}内の最上部の役ピンゾロとなる
-      switch (yaku_against) {
-        case is111 :
-          var n1 = "ピンゾロ!!";
-          break;
-        case is_zorome :
-          var n1 = "ゾロ目!!";
-          break;
-        case is456 :
-          var n1 = "シゴロ!!";
-          break;
-        case is123 :
-          var n1 = "ヒフミ!!";
-          break;
-        case is_num_a :
+      if (yaku_against = is111){
+          var n1 = "ピンゾロ";
+      }
+      else if (yaku_against = is_zorome){
+          var n1 = "ゾロ目";
+      }
+      else if (yaku_against = is456){
+          var n1 = "シゴロ";
+      }
+      else if (yaku_against = is123){
+          var n1 = "ヒフミ";
+      }
+      else if (yaku_against = is_num_a){
           var n1 = "の "+a;
-          break;
-        case is_num_b :
+      }
+      else if (yaku_against = is_num_b){
           var n1 = "の "+b;
-          break;
-        case is_num_c :
+      }
+      else if (yaku_against = is_num_c){
           var n1 = "の "+c;
-          break;
-        default :
-          var n1 = "で役なし";
-          break;
+      }
+      else{
+          var n1 = "役なし";
       }
       //私側
       var my_is111 = (x == 1 && y == 1 && z == 1);
@@ -108,31 +105,29 @@ function afterLoad() {
       var is_num_y = (z == x && x != y);
       var is_num_z = (x == y && y != z);
       var yaku_mine = my_is111 || my_is_zorome || my_is456 || my_is123 || is_num_x || is_num_y || is_num_z;
-      switch (yaku_mine) {
-        case my_is111 :
-          var n2 = "ピンゾロ!!";
-          break;
-        case my_is_zorome :
-          var n2 = "ゾロ目!!";
-          break;
-        case my_is456 :
-          var n2 = "シゴロ!!";
-          break;
-        case my_is123 :
-          var n2 = "ヒフミ!!";
-          break;
-        case is_num_x :
+      if (yaku_mine = my_is111){
+          var n2 = "ピンゾロ";
+      }
+      else if (yaku_mine = my_is_zorome){
+          var n2 = "ゾロ目";
+      }
+      else if (yaku_mine = my_is456){
+          var n2 = "シゴロ";
+      }
+      else if (yaku_mine = my_is123){
+          var n2 = "ヒフミ";
+      }
+      else if (yaku_mine = is_num_x){
           var n2 = "の "+x;
-          break;
-        case is_num_y :
+      }
+      else if (yaku_mine = is_num_y){
           var n2 = "の "+y;
-          break;
-        case is_num_z :
+      }
+      else if (yaku_mine = is_num_z){
           var n2 = "の "+z;
-          break;
-        default:
-          var n2 = "で役なし";
-          break;
+      }
+      else{
+          var n2 = "役なし";
       }
     $('#score_against').html(n1);
     $('#score_mine').html(n2);
