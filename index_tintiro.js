@@ -1,12 +1,12 @@
-//‚±‚ê‚Íindex_tintiro.js
+ï»¿//ã“ã‚Œã¯index_tintiro.js
 function afterLoad() {
 
   $('#btn').click(function(){
-    //ƒTƒCƒRƒ‚ğ6‰ñ“]‚ª‚·
+    //ã‚µã‚¤ã‚³ãƒ­ã‚’6å›è»¢ãŒã™
     for (var i=1; i<=6; i++){
       var seed = Math.floor(Math.random()*6);
       var src = null;
-      //o‚½’l‚Æ‰æ‘œ‚ÌŠÖŒW•t‚¯
+      //å‡ºãŸå€¤ã¨ç”»åƒã®é–¢ä¿‚ä»˜ã‘
       switch (seed) {
         case 0 :
           src = 'one.png';
@@ -27,7 +27,7 @@ function afterLoad() {
           src = 'six.png';
           break;
       }
-      //‰æ‘œ‚Æ”’l‚ÌŒˆ’è
+      //ç”»åƒã¨æ•°å€¤ã®æ±ºå®š
       switch (i) {
         case 1 :
           $('#dice1').attr('src', src);
@@ -61,8 +61,8 @@ function afterLoad() {
           break;
       }
     }
-      //–ğ‚ÌğŒ
-      //‘Šè‘¤
+      //å½¹ã®æ¡ä»¶
+      //ç›¸æ‰‹å´
       var is111 = a == 1 && b == 1 && c == 1;
       var is_zorome = a != 1 && b != 1 && c != 1 && a == b && b == c;
       var is456 = (a == 4 && b == 5 && c == 6)||(a == 4 && b == 6 && c == 5)||(a == 5 && b == 4 && c == 6)||(a == 5 && b == 6 && c == 4)||(a == 6 && b == 4 && c == 5)||(a == 6 && b == 5 && c == 4);
@@ -71,32 +71,32 @@ function afterLoad() {
       var is_num_b = c == a && a != b;
       var is_num_c = a == b && b != c;
       var yaku_against= is111 || is_zorome || is456 || is123 || is_num_a || is_num_b || is_num_c;
-      //–ğ‚ğ•\¦
+      //å½¹ã‚’è¡¨ç¤º
       if (yaku_against = is111){
-          var n1 = "ƒsƒ“ƒ]ƒ";
+          var n1 = "ãƒ”ãƒ³ã‚¾ãƒ­";
       }
       else if (yaku_against = is_zorome){
-          var n1 = "ƒ]ƒ–Ú";
+          var n1 = "ã‚¾ãƒ­ç›®";
       }
       else if (yaku_against = is456){
-          var n1 = "ƒVƒSƒ";
+          var n1 = "ã‚·ã‚´ãƒ­";
       }
       else if (yaku_against = is123){
-          var n1 = "ƒqƒtƒ~";
+          var n1 = "ãƒ’ãƒ•ãƒŸ";
       }
       else if (yaku_against = is_num_a){
-          var n1 = "‚Ì "+a;
+          var n1 = "ã® "+a;
       }
       else if (yaku_against = is_num_b){
-          var n1 = "‚Ì "+b;
+          var n1 = "ã® "+b;
       }
       else if (yaku_against = is_num_c){
-          var n1 = "‚Ì "+c;
+          var n1 = "ã® "+c;
       }
       else{
-          var n1 = "–ğ‚È‚µ";
+          var n1 = "å½¹ãªã—";
       }
-      //„‘¤
+      //ç§å´
       var my_is111 = (x == 1 && y == 1 && z == 1);
       var my_is_zorome = (x != 1 && y != 1 && z != 1 && x == y && y == z);
       var my_is456 = (x == 4 && y == 5 && z == 6)||(x == 4 && y == 6 && z == 5)||(x == 5 && y == 4 && z == 6)||(x == 5 && y == 6 && z == 4)||(x == 6 && y == 4 && z == 5)||(x == y && y == 5 && z == 4);
@@ -106,32 +106,32 @@ function afterLoad() {
       var is_num_z = (x == y && y != z);
       var yaku_mine = my_is111 || my_is_zorome || my_is456 || my_is123 || is_num_x || is_num_y || is_num_z;
       if (yaku_mine = my_is111){
-          var n2 = "ƒsƒ“ƒ]ƒ";
+          var n2 = "ãƒ”ãƒ³ã‚¾ãƒ­";
       }
       else if (yaku_mine = my_is_zorome){
-          var n2 = "ƒ]ƒ–Ú";
+          var n2 = "ã‚¾ãƒ­ç›®";
       }
       else if (yaku_mine = my_is456){
-          var n2 = "ƒVƒSƒ";
+          var n2 = "ã‚·ã‚´ãƒ­";
       }
       else if (yaku_mine = my_is123){
-          var n2 = "ƒqƒtƒ~";
+          var n2 = "ãƒ’ãƒ•ãƒŸ";
       }
       else if (yaku_mine = is_num_x){
-          var n2 = "‚Ì "+x;
+          var n2 = "ã® "+x;
       }
       else if (yaku_mine = is_num_y){
-          var n2 = "‚Ì "+y;
+          var n2 = "ã® "+y;
       }
       else if (yaku_mine = is_num_z){
-          var n2 = "‚Ì "+z;
+          var n2 = "ã® "+z;
       }
       else{
-          var n2 = "–ğ‚È‚µ";
+          var n2 = "å½¹ãªã—";
       }
     $('#score_against').html(n1);
     $('#score_mine').html(n2);
   });
 }
-//ƒ[ƒhŠ®—¹‚µ‚½‚çafterLoad‚ğÀs
+//ãƒ­ãƒ¼ãƒ‰å®Œäº†ã—ãŸã‚‰afterLoadã‚’å®Ÿè¡Œ
 $().ready(afterLoad);
