@@ -1,10 +1,35 @@
-﻿//これはindex_tintiro.js
+﻿//これはindex_tintiro_3times.js
 function afterLoad() {
 
   $('#btn').click(function(){
+  
+  //画像、出目、結果の初期化
+  $('#dice1_1').attr('src', " ");
+  $('#dice2_1').attr('src', " ");
+  $('#dice3_1').attr('src', " ");
+  $('#dice1_2').attr('src', " ");
+  $('#dice2_2').attr('src', " ");
+  $('#dice3_2').attr('src', " ");
+  $('#dice1_3').attr('src', " ");
+  $('#dice2_3').attr('src', " ");
+  $('#dice3_3').attr('src', " ");
+  $('#text1_1').html(" ");
+  $('#text2_1').html(" ");
+  $('#text3_1').html(" ");
+  $('#text1_2').html(" ");
+  $('#text2_2').html(" ");
+  $('#text3_2').html(" ");
+  $('#text1_3').html(" ");
+  $('#text2_3').html(" ");
+  $('#text3_3').html(" ");
+  $('#score_against_1').html(" ");
+  $('#score_against_2').html(" ");
+  $('#score_against_3').html(" ");
+  
     //相手が3度サイコロを振る
     for (var h = 1; h <= 3 ; h++){
-
+    //相手が1度目か役なしであったかの確認
+    if ( h == 1 || n1 == "役なし"){
       //サイコロを3つ表示
       for (var i = 1; i <= 3; i++){
         var seed = Math.floor(Math.random()*6);
@@ -206,13 +231,36 @@ function afterLoad() {
             $('#score_against_3').html(n1);//相手側3投目の役を記述
             break;
         }//画像と出目と役の決定の終了部
-
       }//相手側サイコロを3つ表示
-
+    }//相手が1度目か役なしであったかの確認終了部
     }//相手が最大3度サイコロを振る終了部
+  
+  //画像、出目、結果の初期化
+  $('#dice4_1').attr('src', " ");
+  $('#dice5_1').attr('src', " ");
+  $('#dice6_1').attr('src', " ");
+  $('#dice4_2').attr('src', " ");
+  $('#dice5_2').attr('src', " ");
+  $('#dice6_2').attr('src', " ");
+  $('#dice4_3').attr('src', " ");
+  $('#dice5_3').attr('src', " ");
+  $('#dice6_3').attr('src', " ");
+  $('#text4_1').html(" ");
+  $('#text5_1').html(" ");
+  $('#text6_1').html(" ");
+  $('#text4_2').html(" ");
+  $('#text5_2').html(" ");
+  $('#text6_2').html(" ");
+  $('#text4_3').html(" ");
+  $('#text5_3').html(" ");
+  $('#text6_3').html(" ");
+  $('#score_against_4').html(" ");
+  $('#score_against_5').html(" ");
+  $('#score_against_6').html(" ");
     //私が3度サイコロを振る
     for (var j = 1; j <= 3 ; j++){
-
+    //私が1度目か役なしであったかの確認
+    if ( j == 1 || n2 == "役なし"){
       //サイコロを3つ表示
       for (var k = 1; k <= 3; k++){
         var seed = Math.floor(Math.random()*6);
@@ -409,7 +457,7 @@ function afterLoad() {
         }//画像と出目と役の決定の終了部
 
       }//私側サイコロを3つ表示
-
+    }//私が1度目か役なしであったかの確認終了部
     }//相手が最大3度サイコロを振る終了部
   });
 }
