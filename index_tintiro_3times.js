@@ -4,15 +4,15 @@ function afterLoad() {
   $('#btn').click(function(){
   
   //画像、出目、結果の初期化
-  $('#dice1_1').attr('src', " ");
-  $('#dice2_1').attr('src', " ");
-  $('#dice3_1').attr('src', " ");
-  $('#dice1_2').attr('src', " ");
-  $('#dice2_2').attr('src', " ");
-  $('#dice3_2').attr('src', " ");
-  $('#dice1_3').attr('src', " ");
-  $('#dice2_3').attr('src', " ");
-  $('#dice3_3').attr('src', " ");
+  $('#dice1_1').attr('src', "space.png");
+  $('#dice2_1').attr('src', "space.png");
+  $('#dice3_1').attr('src', "space.png");
+  $('#dice1_2').attr('src', "space.png");
+  $('#dice2_2').attr('src', "space.png");
+  $('#dice3_2').attr('src', "space.png");
+  $('#dice1_3').attr('src', "space.png");
+  $('#dice2_3').attr('src', "space.png");
+  $('#dice3_3').attr('src', "space.png");
   $('#text1_1').html(" ");
   $('#text2_1').html(" ");
   $('#text3_1').html(" ");
@@ -236,15 +236,15 @@ function afterLoad() {
     }//相手が最大3度サイコロを振る終了部
   
   //画像、出目、結果の初期化
-  $('#dice4_1').attr('src', " ");
-  $('#dice5_1').attr('src', " ");
-  $('#dice6_1').attr('src', " ");
-  $('#dice4_2').attr('src', " ");
-  $('#dice5_2').attr('src', " ");
-  $('#dice6_2').attr('src', " ");
-  $('#dice4_3').attr('src', " ");
-  $('#dice5_3').attr('src', " ");
-  $('#dice6_3').attr('src', " ");
+  $('#dice4_1').attr('src', "space.png");
+  $('#dice5_1').attr('src', "space.png");
+  $('#dice6_1').attr('src', "space.png");
+  $('#dice4_2').attr('src', "space.png");
+  $('#dice5_2').attr('src', "space.png");
+  $('#dice6_2').attr('src', "space.png");
+  $('#dice4_3').attr('src', "space.png");
+  $('#dice5_3').attr('src', "space.png");
+  $('#dice6_3').attr('src', "space.png");
   $('#text4_1').html(" ");
   $('#text5_1').html(" ");
   $('#text6_1').html(" ");
@@ -254,9 +254,9 @@ function afterLoad() {
   $('#text4_3').html(" ");
   $('#text5_3').html(" ");
   $('#text6_3').html(" ");
-  $('#score_against_4').html(" ");
-  $('#score_against_5').html(" ");
-  $('#score_against_6').html(" ");
+  $('#score_mine_1').html(" ");
+  $('#score_mine_2').html(" ");
+  $('#score_mine_3').html(" ");
     //私が3度サイコロを振る
     for (var j = 1; j <= 3 ; j++){
     //私が1度目か役なしであったかの確認
