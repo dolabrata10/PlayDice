@@ -30,6 +30,7 @@ function afterLoad() {
     for (var h = 1; h <= 3 ; h++){
     //相手が1度目か役なしであったかの確認
     if ( h == 1 || n1 == "役なし"){
+    //役なしであったならサイコロを振る
       //サイコロを3つ表示
       for (var i = 1; i <= 3; i++){
         var seed = Math.floor(Math.random()*6);
@@ -233,6 +234,7 @@ function afterLoad() {
         }//画像と出目と役の決定の終了部
       }//相手側サイコロを3つ表示
     }//相手が1度目か役なしであったかの確認終了部
+     //役が出たならばサイコロを振るのをやめる
     }//相手が最大3度サイコロを振る終了部
   
   //画像、出目、結果の初期化
@@ -261,6 +263,7 @@ function afterLoad() {
     for (var j = 1; j <= 3 ; j++){
     //私が1度目か役なしであったかの確認
     if ( j == 1 || n2 == "役なし"){
+    //役なしであったならサイコロを振る
       //サイコロを3つ表示
       for (var k = 1; k <= 3; k++){
         var seed = Math.floor(Math.random()*6);
@@ -458,7 +461,114 @@ function afterLoad() {
 
       }//私側サイコロを3つ表示
     }//私が1度目か役なしであったかの確認終了部
+     //役が出たならばサイコロを振るのをやめる
     }//相手が最大3度サイコロを振る終了部
+
+  //役の倍率についてはカイジの地下チンチロを準拠とする
+  //相手の役に対する倍率
+  switch (n1){
+    case "ピンゾロ":
+      bairitu_against = 5;
+      break;
+    case "ゾロ目":
+      bairitu_against = 3;
+      break;
+    case "シゴロ":
+      bairitu_against = 2;
+      break;
+    case "ヒフミ":
+      bairitu_against = -2;
+      break;
+    case "の "+a:
+      bairitu_against = 1;
+      var deme_against = a;
+      break;
+    case "の "+b:
+      bairitu_against = 1;
+      var deme_against = b;
+      break;
+    case "の "+c:
+      bairitu_against = 1;
+      var deme_against = c;
+      break;
+    case "役なし":
+      bairitu_against = 0;
+      break;
+  }
+  //私の役に対する倍率
+  switch (n2){
+    case "ピンゾロ":
+      bairitu_mine = 5;
+      break;
+    case "ゾロ目":
+      bairitu_mine = 3;
+      break;
+    case "シゴロ":
+      bairitu_mine = 2;
+      break;
+    case "ヒフミ":
+      bairitu_mine = -2;
+      break;
+    case "の "+x:
+      bairitu_mine = 1;
+      var deme_mine = x;
+      break;
+    case "の "+y:
+      bairitu_mine = 1;
+      var deme_mine = y;
+      break;
+    case "の "+z:
+      bairitu_mine = 1;
+      var deme_mine = z;
+      break;
+    case "役なし":
+      bairitu_mine = 0;
+      break;
+  }
+  //1倍負け
+  if (deme_against > deme_mine || (bairitu_against == 1 && bairitu_mine == 0)){
+    $('#result').html("1倍負け");
+  }
+  //2倍負け
+  else if (bairitu_against == 2 && (bairitu_mine == 1 || bairitu_mine == 0)){
+    $('#result').html("2倍負け");
+  }
+  //ヒフミの2倍負け
+  else if (bairitu_mine == -2 && (bairitu_against != -2 || bairitu_against != 3 || bairitu_against != 5)){
+    $('#result').html("2倍負け");
+  }
+  //3倍負け
+  else if (bairitu_against == 3 && (bairitu_mine != 5 || bairitu_mine != 3)){
+    $('#result').html("3倍負け");
+  }
+  //5倍負け
+  else if (bairitu_against == 5 && bairitu_mine != 5){
+    $('#result').html("5倍負け");
+  }
+  //1倍勝ち
+  else if (deme_mine > deme_against || (bairitu_mine == 1 && bairitu_against == 0)){
+    $('#result').html("1倍勝ち");
+  }
+  //2倍勝ち
+  else if (bairitu_mine == 2 && (bairitu_against == 1 || bairitu_against == 0)){
+    $('#result').html("2倍勝ち");
+  }
+  //相手ヒフミによる2倍勝ち
+  else if (bairitu_against == -2 && (bairitu_mine != -2 || bairitu_mine != 3 || bairitu_mine != 5)){
+    $('#result').html("2倍勝ち");
+  }
+  //3倍勝ち
+  else if (bairitu_mine == 3 && (bairitu_against != 5 || bairitu_against != 3)){
+    $('#result').html("3倍勝ち");
+  }
+  //5倍勝ち
+  else if(bairitu_mine == 5 && bairitu_against != 5){
+    $('#result').html("5倍勝ち");
+  }
+  //引き分け
+  else{
+    $('#result').html("引き分け");
+  }
   });
 }
 //ロード完了したらafterLoadを実行
