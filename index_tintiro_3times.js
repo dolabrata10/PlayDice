@@ -479,31 +479,31 @@ function afterLoad() {
     //相手の役に対する倍率
     switch (n1){
       case "ピンゾロ":
-        bairitu_against = 5;
+        var bairitu_against = 5;
         break;
       case "ゾロ目":
-        bairitu_against = 3;
+        var bairitu_against = 3;
         break;
       case "シゴロ":
-        bairitu_against = 2;
+        var bairitu_against = 2;
         break;
       case "ヒフミ":
-        bairitu_against = -2;
+        var bairitu_against = -2;
         break;
       case "の "+a:
-        bairitu_against = 1;
+        var bairitu_against = 1;
         var deme_against = a;
         break;
       case "の "+b:
-        bairitu_against = 1;
+        var bairitu_against = 1;
         var deme_against = b;
         break;
       case "の "+c:
-        bairitu_against = 1;
+        var bairitu_against = 1;
         var deme_against = c;
         break;
       case "役なし":
-        bairitu_against = 0;
+        var bairitu_against = 0;
         break;
     }
     //相手の役に対する倍率ここまで
@@ -511,31 +511,31 @@ function afterLoad() {
     //私の役に対する倍率
     switch (n2){
       case "ピンゾロ":
-        bairitu_mine = 5;
+        var bairitu_mine = 5;
         break;
       case "ゾロ目":
-        bairitu_mine = 3;
+        var bairitu_mine = 3;
         break;
       case "シゴロ":
-        bairitu_mine = 2;
+        var bairitu_mine = 2;
         break;
       case "ヒフミ":
-        bairitu_mine = -2;
+        var bairitu_mine = -2;
         break;
       case "の "+x:
-        bairitu_mine = 1;
+        var bairitu_mine = 1;
         var deme_mine = x;
         break;
       case "の "+y:
-        bairitu_mine = 1;
+        var bairitu_mine = 1;
         var deme_mine = y;
         break;
       case "の "+z:
-        bairitu_mine = 1;
+        var bairitu_mine = 1;
         var deme_mine = z;
         break;
       case "役なし":
-        bairitu_mine = 0;
+        var bairitu_mine = 0;
         break;
     }
     //私の役に対する倍率ここまで
