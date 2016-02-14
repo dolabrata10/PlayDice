@@ -475,123 +475,223 @@ function afterLoad() {
      //役が出たならばサイコロを振るのをやめる
     }//相手が最大3度サイコロを振る終了部
 
-  //役の倍率についてはカイジの地下チンチロを準拠とする
-  //相手の役に対する倍率
-  switch (n1){
-    case "ピンゾロ":
-      bairitu_against = 5;
-      break;
-    case "ゾロ目":
-      bairitu_against = 3;
-      break;
-    case "シゴロ":
-      bairitu_against = 2;
-      break;
-    case "ヒフミ":
-      bairitu_against = -2;
-      break;
-    case "の "+a:
-      bairitu_against = 1;
-      var deme_against = a;
-      break;
-    case "の "+b:
-      bairitu_against = 1;
-      var deme_against = b;
-      break;
-    case "の "+c:
-      bairitu_against = 1;
-      var deme_against = c;
-      break;
-    case "役なし":
-      bairitu_against = 0;
-      break;
-  }
-  //私の役に対する倍率
-  switch (n2){
-    case "ピンゾロ":
-      bairitu_mine = 5;
-      break;
-    case "ゾロ目":
-      bairitu_mine = 3;
-      break;
-    case "シゴロ":
-      bairitu_mine = 2;
-      break;
-    case "ヒフミ":
-      bairitu_mine = -2;
-      break;
-    case "の "+x:
-      bairitu_mine = 1;
-      var deme_mine = x;
-      break;
-    case "の "+y:
-      bairitu_mine = 1;
-      var deme_mine = y;
-      break;
-    case "の "+z:
-      bairitu_mine = 1;
-      var deme_mine = z;
-      break;
-    case "役なし":
-      bairitu_mine = 0;
-      break;
-  }
-  //1倍負け
-  if (deme_against > deme_mine || (bairitu_against == 1 && bairitu_mine == 0)){
-    $('#result').html("1倍負け");
-    goukei = goukei - maisuu * bairitu_against;
-  }
-  //2倍負け
-  else if (bairitu_against == 2 && (bairitu_mine == 1 || bairitu_mine == 0)){
-    $('#result').html("2倍負け");
-    goukei = goukei - maisuu * bairitu_against;
-  }
-  //ヒフミの2倍負け
-  else if (bairitu_mine == -2 && (bairitu_against != -2 || bairitu_against != 3 || bairitu_against != 5)){
-    $('#result').html("2倍負け");
-    goukei = goukei + maisuu * bairitu_mine;
-  }
-  //3倍負け
-  else if (bairitu_against == 3 && (bairitu_mine != 5 || bairitu_mine != 3)){
-    $('#result').html("3倍負け");
-    goukei = goukei - maisuu * bairitu_against;
-  }
-  //5倍負け
-  else if (bairitu_against == 5 && bairitu_mine != 5){
-    $('#result').html("5倍負け");
-    goukei = goukei - maisuu * bairitu_against;
-  }
-  //1倍勝ち
-  else if (deme_mine > deme_against || (bairitu_mine == 1 && bairitu_against == 0)){
-    $('#result').html("1倍勝ち");
-    goukei = goukei + maisuu * (bairitu_mine + 1);
-  }
-  //2倍勝ち
-  else if (bairitu_mine == 2 && (bairitu_against == 1 || bairitu_against == 0)){
-    $('#result').html("2倍勝ち");
-    goukei = goukei + maisuu * (bairitu_mine + 1);
-  }
-  //相手ヒフミによる2倍勝ち
-  else if (bairitu_against == -2 && (bairitu_mine != -2 || bairitu_mine != 3 || bairitu_mine != 5)){
-    $('#result').html("2倍勝ち");
-    goukei = goukei - maisuu * (bairitu_against - 1);
-  }
-  //3倍勝ち
-  else if (bairitu_mine == 3 && (bairitu_against != 5 || bairitu_against != 3)){
-    $('#result').html("3倍勝ち");
-    goukei = goukei + maisuu * (bairitu_mine + 1);
-  }
-  //5倍勝ち
-  else if(bairitu_mine == 5 && bairitu_against != 5){
-    $('#result').html("5倍勝ち");
-    goukei = goukei + maisuu * (bairitu_mine + 1);
-  }
-  //引き分け
-  else{
-    $('#result').html("引き分け");
-    goukei = goukei + maisuu;
-  }
+    //役の倍率についてはカイジの地下チンチロを準拠とする
+    //相手の役に対する倍率
+    switch (n1){
+      case "ピンゾロ":
+        bairitu_against = 5;
+        break;
+      case "ゾロ目":
+        bairitu_against = 3;
+        break;
+      case "シゴロ":
+        bairitu_against = 2;
+        break;
+      case "ヒフミ":
+        bairitu_against = -2;
+        break;
+      case "の "+a:
+        bairitu_against = 1;
+        var deme_against = a;
+        break;
+      case "の "+b:
+        bairitu_against = 1;
+        var deme_against = b;
+        break;
+      case "の "+c:
+        bairitu_against = 1;
+        var deme_against = c;
+        break;
+      case "役なし":
+        bairitu_against = 0;
+        break;
+    }
+    //相手の役に対する倍率ここまで
+  
+    //私の役に対する倍率
+    switch (n2){
+      case "ピンゾロ":
+        bairitu_mine = 5;
+        break;
+      case "ゾロ目":
+        bairitu_mine = 3;
+        break;
+      case "シゴロ":
+        bairitu_mine = 2;
+        break;
+      case "ヒフミ":
+        bairitu_mine = -2;
+        break;
+      case "の "+x:
+        bairitu_mine = 1;
+        var deme_mine = x;
+        break;
+      case "の "+y:
+        bairitu_mine = 1;
+        var deme_mine = y;
+        break;
+      case "の "+z:
+        bairitu_mine = 1;
+        var deme_mine = z;
+        break;
+      case "役なし":
+        bairitu_mine = 0;
+        break;
+    }
+    //私の役に対する倍率ここまで
+    
+    //勝敗の決定
+    switch (bairitu_mine){
+      //私の出目がピンゾロの場合
+      case 5:
+        switch(bairitu_against){
+          case 5:
+            $('#result').html("引き分け");
+            break;
+          case 3:
+            $('#result').html("5倍勝ち");
+            break;
+          case 2:
+            $('#result').html("5倍勝ち");
+            break;
+          case -2:
+            $('#result').html("5倍勝ち");
+            break;
+          case 1:
+            $('#result').html("5倍勝ち");
+            break;
+          case 0:
+            $('#result').html("5倍勝ち");
+            break;
+        }
+        break;
+      //私の出目がゾロ目の場合
+      case 3:
+        switch(bairitu_against){
+          case 5:
+            $('#result').html("5倍負け");
+            break;
+          case 3:
+            $('#result').html("引き分け");
+            break;
+          case 2:
+            $('#result').html("3倍勝ち");
+            break;
+          case -2:
+            $('#result').html("3倍勝ち");
+            break;
+          case 1:
+            $('#result').html("3倍勝ち");
+            break;
+          case 0:
+            $('#result').html("3倍勝ち");
+            break;
+        }
+        break;
+      //私の出目がシゴロの場合
+      case 2:
+        switch(bairitu_against){
+          case 5:
+            $('#result').html("5倍負け");
+            break;
+          case 3:
+            $('#result').html("3倍負け");
+            break;
+          case 2:
+            $('#result').html("引き分け");
+            break;
+          case -2:
+            $('#result').html("2倍勝ち");
+            break;
+          case 1:
+            $('#result').html("2倍勝ち");
+            break;
+          case 0:
+            $('#result').html("2倍勝ち");
+            break;
+        }
+        break;
+      //私の出目がヒフミの場合
+      case -2:
+        switch(bairitu_against){
+          case 5:
+            $('#result').html("5倍負け");
+            break;
+          case 3:
+            $('#result').html("3倍負け");
+            break;
+          case 2:
+            $('#result').html("2倍負け");
+            break;
+          case -2:
+            $('#result').html("引き分け");
+            break;
+          case 1:
+            $('#result').html("2倍負け");
+            break;
+          case 0:
+            $('#result').html("2倍負け");
+            break;
+        }
+        break;
+      //私の出目が数字の場合
+      case 1:
+        switch(bairitu_against){
+          case 5:
+            $('#result').html("5倍負け");
+            break;
+          case 3:
+            $('#result').html("3倍負け");
+            break;
+          case 2:
+            $('#result').html("2倍負け");
+            break;
+          case -2:
+            $('#result').html("2倍勝ち");
+            break;
+          case 1:
+            if(deme_mine > deme_against){
+              $('#result').html("1倍勝ち");
+            }
+            else if(deme_mine == deme_against){
+              $('#result').html("引き分け");
+            }
+            else if(deme_mine < deme_against){
+              $('#result').html("1倍負け");
+            }
+            break;
+          case 0:
+            $('#result').html("1倍勝ち");
+            break;
+        }
+        break;
+      //私の出目が役なしの場合
+      case 0:
+        switch(bairitu_against){
+          case 5:
+            $('#result').html("5倍負け");
+            break;
+          case 3:
+            $('#result').html("3倍負け");
+            break;
+          case 2:
+            $('#result').html("2倍負け");
+            break;
+          case -2:
+            $('#result').html("2倍勝ち");
+            break;
+          case 1:
+            $('#result').html("1倍負け");
+            break;
+          case 0:
+            $('#result').html("引き分け");
+            break;
+        }
+        break;
+    }
+    //勝敗の決定ここまで
   });
+  //ボタンを押すと結果が表示される仕組みここまで
 }
 //ロード完了したらafterLoadを実行
 $().ready(afterLoad);
