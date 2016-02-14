@@ -40,14 +40,14 @@
     <img id="dice3_1" src="first.png">
     </td>
     <td>
-    <img id="dice1_2" src="space.png">
-    <img id="dice2_2" src="space.png">
-    <img id="dice3_2" src="space.png">
+    <img id="dice1_2" src="first.png">
+    <img id="dice2_2" src="first.png">
+    <img id="dice3_2" src="first.png">
     </td>
     <td>
-    <img id="dice1_3" src="space.png">
-    <img id="dice2_3" src="space.png">
-    <img id="dice3_3" src="space.png">
+    <img id="dice1_3" src="first.png">
+    <img id="dice2_3" src="first.png">
+    <img id="dice3_3" src="first.png">
     </td>
   </tr>
   </table>
@@ -84,33 +84,40 @@
     <img id="dice6_1" src="first.png">
     </td>
     <td>
-    <img id="dice4_2" src="space.png">
-    <img id="dice5_2" src="space.png">
-    <img id="dice6_2" src="space.png">
+    <img id="dice4_2" src="first.png">
+    <img id="dice5_2" src="first.png">
+    <img id="dice6_2" src="first.png">
     </td>
     <td>
-    <img id="dice4_3" src="space.png">
-    <img id="dice5_3" src="space.png">
-    <img id="dice6_3" src="space.png">
+    <img id="dice4_3" src="first.png">
+    <img id="dice5_3" src="first.png">
+    <img id="dice6_3" src="first.png">
     </td>
   </tr>
   </table>
-  <span>賭けコイン: </span>
-  <select id="my_bet">
-	<option value = 1> 1 </option>
-	<option value = 2> 2 </option>
-	<option value = 3> 3 </option>
-	<option value = 4> 4 </option>
-	<option value = 5> 5 </option>
-	<option value = 6> 6 </option>
-	<option value = 7> 7 </option>
-	<option value = 8> 8 </option>
-	<option value = 9> 9 </option>
-	<option value = 10> 10 </option>
-  </select>
-  <span>持ちコイン:</span>
-  <span id="my_coin"> 20 </span>
-
+  <form name="myform">
+    <table border="1"  cellpadding="5">
+      <tr>
+        <td>賭けコイン</td>
+        <td><select size="5" id="my_bet" onChange="keisan()">
+        <option value="1"> 1 </option>
+        <option value="2"> 2 </option>
+        <option value="3"> 3 </option>
+        <option value="4"> 4 </option>
+        <option value="5"> 5 </option>
+        <option value="6"> 6 </option>
+        <option value="7"> 7 </option>
+        <option value="8"> 8 </option>
+        <option value="9"> 9 </option>
+        <option value="10"> 10 </option>
+        </select>枚</td>
+      </tr>
+      <tr>
+        <td nowrap><font color="#ff0000">■<b>持ちコイン</b></font></td>
+        <td nowrap><input type="text" name="total" id="my_coin" value="20"> 枚 </td>
+      </tr>
+    </table>
+  </form>
   <span>結果は: </span>
   <span id="result"> </span><br>
 

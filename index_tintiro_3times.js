@@ -1,22 +1,24 @@
 ﻿//これはindex_tintiro_3times.js
+
+
+//賭けコインを変更すると持ちコイン数を変動させる仕組み。
+  var maisuu = new Array();
+  maisuu[0] = 1;//賭けコインの枚数
+  function keisan(){
+    for(i=0;i<1;i++){
+    var goukei = 20;//最初の持ちコイン数
+    num = eval(document.myform.elements[i].options[document.myform.elements[i].selectedIndex].value);
+    goukei = goukei - maisuu[i]*num;//枚数毎に合計数が減る
+    }
+   document.myform.total.value=goukei;
+  }
+//仕組みここまで。
+
 function afterLoad() {
 
-  //いろいろ試すが数値として判定されず。htmlから選択した賭けコイン数を読み込めない。
-  //var my_bet = $('#my_bet').val();
-  //$('#my_coin').html(my_bet);
-
-  //var start_coin = 5 + 10;//最初の持ちコインを20とする
-  //$('#my_coin').html(start_coin);
-  
-  //コインを計算する
-  //私のコイン＝最初のコイン+賭けコイン＊倍率
-  //var coin_js = $('#my_coin') + $('#my_bet') * "bairitu";
-  //var coin_sum = $('#my_coin') + $('#my_bet') * "bairitu";//コインの枚数を計算
-  //$('#my_coin').html(coin_sum);//htmlへ表示されるコインの枚数を変更する
-
-  //ボタンを押す
+//ボタンを押すと結果が表示される
   $('#btn').click(function(){
-  
+
   //画像、出目、結果の初期化
   $('#dice1_1').attr('src', "space.png");
   $('#dice2_1').attr('src', "space.png");
@@ -482,120 +484,119 @@ function afterLoad() {
   //相手の役に対する倍率
   switch (n1){
     case "ピンゾロ":
-      var bairitu_against = 5;
+      bairitu_against = 5;
       break;
     case "ゾロ目":
-      var bairitu_against = 3;
+      bairitu_against = 3;
       break;
     case "シゴロ":
-      var bairitu_against = 2;
+      bairitu_against = 2;
       break;
     case "ヒフミ":
-      var bairitu_against = -2;
+      bairitu_against = -2;
       break;
     case "の "+a:
-      var bairitu_against = 1;
+      bairitu_against = 1;
       var deme_against = a;
       break;
     case "の "+b:
-      var bairitu_against = 1;
+      bairitu_against = 1;
       var deme_against = b;
       break;
     case "の "+c:
-      var bairitu_against = 1;
+      bairitu_against = 1;
       var deme_against = c;
       break;
     case "役なし":
-      var bairitu_against = 0;
+      bairitu_against = 0;
       break;
   }
   //私の役に対する倍率
   switch (n2){
     case "ピンゾロ":
-      var bairitu_mine = 5;
+      bairitu_mine = 5;
       break;
     case "ゾロ目":
-      var bairitu_mine = 3;
+      bairitu_mine = 3;
       break;
     case "シゴロ":
-      var bairitu_mine = 2;
+      bairitu_mine = 2;
       break;
     case "ヒフミ":
-      var bairitu_mine = -2;
+      bairitu_mine = -2;
       break;
     case "の "+x:
-      var bairitu_mine = 1;
+      bairitu_mine = 1;
       var deme_mine = x;
       break;
     case "の "+y:
-      var bairitu_mine = 1;
+      bairitu_mine = 1;
       var deme_mine = y;
       break;
     case "の "+z:
-      var bairitu_mine = 1;
+      bairitu_mine = 1;
       var deme_mine = z;
       break;
     case "役なし":
-      var bairitu_mine = 0;
+      bairitu_mine = 0;
       break;
   }
   //1倍負け
   if (deme_against > deme_mine || (bairitu_against == 1 && bairitu_mine == 0)){
     $('#result').html("1倍負け");
-    var bairitu = -1;
+    goukei = goukei - maisuu * bairitu_against;
   }
   //2倍負け
   else if (bairitu_against == 2 && (bairitu_mine == 1 || bairitu_mine == 0)){
     $('#result').html("2倍負け");
-    var bairitu = -2;
+    goukei = goukei - maisuu * bairitu_against;
   }
   //ヒフミの2倍負け
   else if (bairitu_mine == -2 && (bairitu_against != -2 || bairitu_against != 3 || bairitu_against != 5)){
     $('#result').html("2倍負け");
-    var bairitu = -2;
+    goukei = goukei + maisuu * bairitu_mine;
   }
   //3倍負け
   else if (bairitu_against == 3 && (bairitu_mine != 5 || bairitu_mine != 3)){
     $('#result').html("3倍負け");
-    var bairitu = -3;
+    goukei = goukei - maisuu * bairitu_against;
   }
   //5倍負け
   else if (bairitu_against == 5 && bairitu_mine != 5){
     $('#result').html("5倍負け");
-    var bairitu = -5;
+    goukei = goukei - maisuu * bairitu_against;
   }
   //1倍勝ち
   else if (deme_mine > deme_against || (bairitu_mine == 1 && bairitu_against == 0)){
     $('#result').html("1倍勝ち");
-    var bairitu = 1;
+    goukei = goukei + maisuu * (bairitu_mine + 1);
   }
   //2倍勝ち
   else if (bairitu_mine == 2 && (bairitu_against == 1 || bairitu_against == 0)){
     $('#result').html("2倍勝ち");
-    var bairitu = 2;
+    goukei = goukei + maisuu * (bairitu_mine + 1);
   }
   //相手ヒフミによる2倍勝ち
   else if (bairitu_against == -2 && (bairitu_mine != -2 || bairitu_mine != 3 || bairitu_mine != 5)){
     $('#result').html("2倍勝ち");
-    var bairitu = 2;
+    goukei = goukei - maisuu * (bairitu_against - 1);
   }
   //3倍勝ち
   else if (bairitu_mine == 3 && (bairitu_against != 5 || bairitu_against != 3)){
     $('#result').html("3倍勝ち");
-    var bairitu = 3;
+    goukei = goukei + maisuu * (bairitu_mine + 1);
   }
   //5倍勝ち
   else if(bairitu_mine == 5 && bairitu_against != 5){
     $('#result').html("5倍勝ち");
-    var bairitu = 5;
+    goukei = goukei + maisuu * (bairitu_mine + 1);
   }
   //引き分け
   else{
     $('#result').html("引き分け");
-    var bairitu = 0;
+    goukei = goukei + maisuu;
   }
-  });//ボタンを押す終了部
-
+  });
 }
 //ロード完了したらafterLoadを実行
 $().ready(afterLoad);
