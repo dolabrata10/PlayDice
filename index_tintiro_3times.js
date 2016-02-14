@@ -2,16 +2,11 @@
 
 
 //賭けコインを変更すると持ちコイン数を変動させる仕組み。
-  var maisuu = new Array();
-  maisuu[0] = 1;//賭けコインの枚数
-  function keisan(){
-    for(i=0;i<1;i++){
-    var goukei = 20;//最初の持ちコイン数
-    num = eval(document.myform.elements[i].options[document.myform.elements[i].selectedIndex].value);
-    goukei = goukei - maisuu[i]*num;//枚数毎に合計数が減る
-    }
-   document.myform.total.value=goukei;
-  }
+function keisan(){
+  var goukei = 20;
+  var maisuu = document.form1.my_bet.selectedIndex * 1 + 1;//賭ける枚数の選択
+  document.form1.total.value = goukei - maisuu; //持ちコイン数
+}
 //仕組みここまで。
 
 function afterLoad() {
