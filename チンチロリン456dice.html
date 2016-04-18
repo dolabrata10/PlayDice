@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>チンチロリン456dice</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="index_tintiro_456dice.js"></script>
+</head>
+
+<body>
+  <table border="5" rules="all">
+  <span>相手の役は</span>
+  <tr>
+    <td>
+    <span>1投目:</span>
+    <span id="text1_1"> </span>
+    <span id="text2_1"> </span>
+    <span id="text3_1"> </span>
+    <span id="score_against_1"> </span>
+    </td>
+    <td>
+    <span>2投目:</span>
+    <span id="text1_2"> </span>
+    <span id="text2_2"> </span>
+    <span id="text3_2"> </span>
+    <span id="score_against_2"> </span>
+    </td>
+    <td>
+    <span>3投目:</span>
+    <span id="text1_3"> </span>
+    <span id="text2_3"> </span>
+    <span id="text3_3"> </span>
+    <span id="score_against_3"> </span><br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <img id="dice1_1" src="first.png">
+    <img id="dice2_1" src="first.png">
+    <img id="dice3_1" src="first.png">
+    </td>
+    <td>
+    <img id="dice1_2" src="first.png">
+    <img id="dice2_2" src="first.png">
+    <img id="dice3_2" src="first.png">
+    </td>
+    <td>
+    <img id="dice1_3" src="first.png">
+    <img id="dice2_3" src="first.png">
+    <img id="dice3_3" src="first.png">
+    </td>
+  </tr>
+  </table>
+
+  <table border="5" rules="all">
+  <span>私の役は</span><br>
+  <tr>
+    <td>
+    <span>1投目:</span>
+    <span id="text4_1"> </span>
+    <span id="text5_1"> </span>
+    <span id="text6_1"> </span>
+    <span id="score_mine_1"> </span>
+    </td>
+    <td>
+    <span>2投目:</span>
+    <span id="text4_2"> </span>
+    <span id="text5_2"> </span>
+    <span id="text6_2"> </span>
+    <span id="score_mine_2"> </span>
+    </td>
+    <td>
+    <span>3投目:</span>
+    <span id="text4_3"> </span>
+    <span id="text5_3"> </span>
+    <span id="text6_3"> </span>
+    <span id="score_mine_3"> </span>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <img id="dice4_1" src="first.png">
+    <img id="dice5_1" src="first.png">
+    <img id="dice6_1" src="first.png">
+    </td>
+    <td>
+    <img id="dice4_2" src="first.png">
+    <img id="dice5_2" src="first.png">
+    <img id="dice6_2" src="first.png">
+    </td>
+    <td>
+    <img id="dice4_3" src="first.png">
+    <img id="dice5_3" src="first.png">
+    <img id="dice6_3" src="first.png">
+    </td>
+  </tr>
+  </table>
+
+ 
+    <table border="1"  cellpadding="5" style="text-align:right;">
+      <tr>
+        <td><span><font color="#ff0000">■<b>持ちコイン</b></font></span></td>
+        <td><span><type="text" name="total" id="text_coin"> 20 </span>
+        <span>枚</span></td>
+      </tr><br>
+      <tr>
+        <td><span>結果は</span></td>
+        <td><span id="result" width="250"> </span><br></td>
+      </tr>
+    </table>
+  <button id="btn">ボタン</button><br>
+  <span>試行回数：</span>
+  <span id="text_times">0</span><br>
+ ※役はカイジの地下チンチロを準拠としています
+</body>
+
+</html>
