@@ -1,18 +1,17 @@
 ﻿//これはindex_tintiro_3times.js
+//賭けコイン数は1で一定とする。
 
-
-//賭けコインを変更すると持ちコイン数を変動させる仕組み。
-function keisan(){
-  var goukei = 20;
-  var maisuu = document.form1.my_bet.selectedIndex * 1 + 1;//賭ける枚数の選択
-  document.form1.total.value = goukei - maisuu; //持ちコイン数
-}
-//仕組みここまで。
+var goukei = 20;//初期のコイン数は20枚
+var dice_times = 0 ;//サイコロを振った回数の初期値
 
 function afterLoad() {
 
 //ボタンを押すと結果が表示される
   $('#btn').click(function(){
+
+  //サイコロを振った回数を表示させる。
+  dice_times = dice_times + 1;//振った回数はボタンを押すたび1増える
+  $('#text_times').html(dice_times);//回数の表示
 
   //画像、出目、結果の初期化
   $('#dice1_1').attr('src', "space.png");
@@ -74,6 +73,7 @@ function afterLoad() {
 
           //1度目のサイコロ振り
           case 1 :
+            //サイコロを3つ表示させる
             switch (i) {
               case 1 ://サイコロ1つ目
                 $('#dice1_1').attr('src', src);//サイコロの出た目の画像を表示させる
@@ -91,6 +91,7 @@ function afterLoad() {
                 var c = seed + 1;
                 break;
             }
+            //サイコロを3つ表示させる終了部
             //相手側の役の条件
             var is111 = a == 1 && b == 1 && c == 1;
             var is_zorome = a != 1 && b != 1 && c != 1 && a == b && b == c;
@@ -99,8 +100,8 @@ function afterLoad() {
             var is_num_a = b == c && c != a;
             var is_num_b = c == a && a != b;
             var is_num_c = a == b && b != c;
-            var yaku_against= is111 || is_zorome || is456 || is123 || is_num_a || is_num_b || is_num_c;
-            //役を表示
+            var yaku_against = is111 || is_zorome || is456 || is123 || is_num_a || is_num_b || is_num_c;
+            //相手側の役を表示
             if (yaku_against = is111){
               var n1 = "ピンゾロ";
             }
@@ -156,8 +157,8 @@ function afterLoad() {
             var is_num_a = b == c && c != a;
             var is_num_b = c == a && a != b;
             var is_num_c = a == b && b != c;
-            var yaku_against= is111 || is_zorome || is456 || is123 || is_num_a || is_num_b || is_num_c;
-            //役を表示
+            var yaku_against = is111 || is_zorome || is456 || is123 || is_num_a || is_num_b || is_num_c;
+            //相手側の役を表示
             if (yaku_against = is111){
               var n1 = "ピンゾロ";
             }
@@ -213,8 +214,8 @@ function afterLoad() {
             var is_num_a = b == c && c != a;
             var is_num_b = c == a && a != b;
             var is_num_c = a == b && b != c;
-            var yaku_against= is111 || is_zorome || is456 || is123 || is_num_a || is_num_b || is_num_c;
-            //役を表示
+            var yaku_against = is111 || is_zorome || is456 || is123 || is_num_a || is_num_b || is_num_c;
+            //相手側の役を表示
             if (yaku_against = is111){
               var n1 = "ピンゾロ";
             }
@@ -330,7 +331,7 @@ function afterLoad() {
             var my_is_num_y = (z == x && x != y);
             var my_is_num_z = (x == y && y != z);
             var yaku_mine = my_is111 || my_is_zorome || my_is456 || my_is123 || my_is_num_x || my_is_num_y || my_is_num_z;
-            //役を表示
+            //私側の役を表示
             if (yaku_mine = my_is111){
               var n2 = "ピンゾロ";
             }
@@ -386,7 +387,7 @@ function afterLoad() {
             var my_is_num_y = (z == x && x != y);
             var my_is_num_z = (x == y && y != z);
             var yaku_mine = my_is111 || my_is_zorome || my_is456 || my_is123 || my_is_num_x || my_is_num_y || my_is_num_z;
-            //役を表示
+            //私側の役を表示
             if (yaku_mine = my_is111){
               var n2 = "ピンゾロ";
             }
@@ -441,7 +442,7 @@ function afterLoad() {
             var my_is_num_y = (z == x && x != y);
             var my_is_num_z = (x == y && y != z);
             var yaku_mine = my_is111 || my_is_zorome || my_is456 || my_is123 || my_is_num_x || my_is_num_y || my_is_num_z;
-            //役を表示
+            //私側の役を表示
             if (yaku_mine = my_is111){
               var n2 = "ピンゾロ";
             }
@@ -547,21 +548,37 @@ function afterLoad() {
         switch(bairitu_against){
           case 5:
             $('#result').html("引き分け");
+            //持ちコインの変動なし。
             break;
           case 3:
             $('#result').html("5倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 2:
             $('#result').html("5倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case -2:
             $('#result').html("5倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 1:
             $('#result').html("5倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 0:
             $('#result').html("5倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
         }
         break;
@@ -570,21 +587,37 @@ function afterLoad() {
         switch(bairitu_against){
           case 5:
             $('#result').html("5倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 3:
             $('#result').html("引き分け");
+            //持ちコインの変動なし。
             break;
           case 2:
             $('#result').html("3倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case -2:
             $('#result').html("3倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 1:
             $('#result').html("3倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 0:
             $('#result').html("3倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
         }
         break;
@@ -593,21 +626,37 @@ function afterLoad() {
         switch(bairitu_against){
           case 5:
             $('#result').html("5倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 3:
             $('#result').html("3倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 2:
             $('#result').html("引き分け");
+            //持ちコインの変動なし。
             break;
           case -2:
             $('#result').html("2倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 1:
             $('#result').html("2倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 0:
             $('#result').html("2倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
         }
         break;
@@ -616,21 +665,37 @@ function afterLoad() {
         switch(bairitu_against){
           case 5:
             $('#result').html("5倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 3:
             $('#result').html("3倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 2:
             $('#result').html("2倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case -2:
             $('#result').html("引き分け");
+            //持ちコインの変動なし。
             break;
           case 1:
             $('#result').html("2倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 0:
             $('#result').html("2倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
         }
         break;
@@ -639,29 +704,53 @@ function afterLoad() {
         switch(bairitu_against){
           case 5:
             $('#result').html("5倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 3:
             $('#result').html("3倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 2:
             $('#result').html("2倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case -2:
             $('#result').html("2倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 1:
             if(deme_mine > deme_against){
               $('#result').html("1倍勝ち");
+              //持ちコイン数を変動させる。
+              goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+              $('#text_coin').html(goukei);//持ちコイン数を表示
+              var bairitu = 1;
             }
             else if(deme_mine == deme_against){
               $('#result').html("引き分け");
+              //持ちコインの変動なし。
             }
             else if(deme_mine < deme_against){
               $('#result').html("1倍負け");
+              //持ちコイン数を変動させる。
+              goukei = goukei - 1 * bairitu_against; //持ちコイン数
+              $('#text_coin').html(goukei);//持ちコイン数を表示
             }
             break;
           case 0:
             $('#result').html("1倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei + 1 * bairitu_mine; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
+            var bairitu = 1;
             break;
         }
         break;
@@ -670,21 +759,37 @@ function afterLoad() {
         switch(bairitu_against){
           case 5:
             $('#result').html("5倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 3:
             $('#result').html("3倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 2:
             $('#result').html("2倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case -2:
             $('#result').html("2倍勝ち");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 1:
             $('#result').html("1倍負け");
+            //持ちコイン数を変動させる。
+            goukei = goukei - 1 * bairitu_against; //持ちコイン数
+            $('#text_coin').html(goukei);//持ちコイン数を表示
             break;
           case 0:
             $('#result').html("引き分け");
+            //持ちコインの変動なし。
             break;
         }
         break;

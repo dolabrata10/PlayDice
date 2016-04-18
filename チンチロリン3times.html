@@ -95,33 +95,22 @@
     </td>
   </tr>
   </table>
-  <form action="#" name="form1">
-    <table border="1"  cellpadding="5">
+
+ 
+    <table border="1"  cellpadding="5" style="text-align:right;">
       <tr>
-        <td>賭けコイン</td>
-        <td><select size="5" name="my_bet" onChange="keisan()">
-        <option value="1"> 1 </option>
-        <option value="2"> 2 </option>
-        <option value="3"> 3 </option>
-        <option value="4"> 4 </option>
-        <option value="5"> 5 </option>
-        <option value="6"> 6 </option>
-        <option value="7"> 7 </option>
-        <option value="8"> 8 </option>
-        <option value="9"> 9 </option>
-        <option value="10"> 10 </option>
-        </select>枚</td>
-      </tr>
+        <td><span><font color="#ff0000">■<b>持ちコイン</b></font></span></td>
+        <td><span><type="text" name="total" id="text_coin"> 20 </span>
+        <span>枚</span></td>
+      </tr><br>
       <tr>
-        <td nowrap><font color="#ff0000">■<b>持ちコイン</b></font></td>
-        <td nowrap><input type="text" name="total" id="my_coin" value="20"> 枚 </td>
+        <td><span>結果は</span></td>
+        <td><span id="result"> </span><br></td>
       </tr>
     </table>
-  </form>
-  <span>結果は: </span>
-  <span id="result"> </span><br>
-
   <button id="btn">ボタン</button><br>
+  <span>試行回数：</span>
+  <span id="text_times">0</span><br>
  ※役はカイジの地下チンチロを準拠としています
 </body>
 
